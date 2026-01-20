@@ -78,7 +78,34 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $isStudent = TRUE;
+        $hasDiscount = FALSE;
+        $premiumMember = FALSE;
+
+        if($isStudent){
+            $studentVar = "yes";
+        }
+        else{
+            $studentVar = "no";
+        }
+
+        if($hasDiscount){
+            $discountVar = "yes";
+        }
+        else{
+            $discountVar = "no";
+        }
+
+        if($premiumMember){
+            $premVar = "yes";
+        }
+        else{
+            $premVar = "no";
+        }
+        
+        echo "is student: $studentVar ";
+        echo "has discount: $discountVar ";
+        echo "is premium member: $premVar ";
         ?>
     </div>
 
