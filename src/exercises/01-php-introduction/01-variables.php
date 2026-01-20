@@ -82,26 +82,11 @@
         $hasDiscount = FALSE;
         $premiumMember = FALSE;
 
-        if($isStudent){
-            $studentVar = "yes";
-        }
-        else{
-            $studentVar = "no";
-        }
+        $studentVar = ($isStudent) ? "yes" : "no";
 
-        if($hasDiscount){
-            $discountVar = "yes";
-        }
-        else{
-            $discountVar = "no";
-        }
+        $discountVar = ($hasDiscount) ? "yes" : "no";
 
-        if($premiumMember){
-            $premVar = "yes";
-        }
-        else{
-            $premVar = "no";
-        }
+        $premVar = ($premiumMember) ? "yes" : "no";
         
         echo "is student: $studentVar ";
         echo "has discount: $discountVar ";

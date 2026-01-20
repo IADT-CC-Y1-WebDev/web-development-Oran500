@@ -26,7 +26,20 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $age = 76;
+
+        if($age < 13){
+            echo "$age is a child";
+        }
+        else if($age < 20){
+            echo "$age is a teenager";
+        }
+        else if($age < 65){
+            echo "$age is an adult";
+        }
+        else{
+            echo "$age is a senior";
+        }
         ?>
     </div>
 
@@ -42,7 +55,38 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $weekDay = 1;
+
+        if($weekDay = 1){
+            $day = "Monday";
+            $weekTime = "weekday";
+        }
+        else if($weekDay = 2){
+            $day = "Tuesday";
+            $weekTime = "weekday";
+        }
+        else if($weekDay = 3){
+            $day = "Wednesday";
+            $weekTime = "weekday";
+        }
+        else if($weekDay = 4){
+            $day = "Thursday";
+            $weekTime = "weekday";
+        }
+        else if($weekDay = 5){
+            $day = "Friday";
+            $weekTime = "weekday";
+        }
+        else if($weekDay = 6){
+            $day = "Saturday";
+            $weekTime = "weekend";
+        }
+        else if($weekDay = 7){
+            $day = "Sunday";
+            $weekTime = "weekend";
+        }
+
+        echo "$day $weekTime";
         ?>
     </div>
 
@@ -57,7 +101,12 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $tables = 4;
+
+        for($i = 0; $i <= 10; $i++){
+            $result = $tables * $i;
+            echo "<p>$tables x $i = $result </p>";
+        }
         ?>
     </div>
 
@@ -72,7 +121,17 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $count = 10;
+
+        while($count >=0){
+            if($count > 0){
+                echo "<p>$count</p>";
+            }
+            else{
+                echo "Blast off!!";
+            }
+            $count = $count - 1;
+        }
         ?>
     </div>
 
