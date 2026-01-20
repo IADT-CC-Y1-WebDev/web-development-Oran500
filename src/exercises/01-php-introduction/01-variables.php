@@ -29,7 +29,7 @@
         $firstName = "Oran";
         $lastName = "Phillips";
         $age = "19";
-        $city = "kilmacanouge"
+        $city = "kilmacanouge";
 
         echo "My name is $firstName $lastName, I am $age years old and I live in $city";
         ?>
