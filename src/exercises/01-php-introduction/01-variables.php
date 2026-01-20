@@ -28,8 +28,10 @@
         <?php
         $firstName = "Oran";
         $lastName = "Phillips";
+        $age = "19";
+        $city = "kilmacanouge"
 
-        echo "My name is $firstName $lastName";
+        echo "My name is $firstName $lastName, I am $age years old and I live in $city";
         ?>
     </div>
 
