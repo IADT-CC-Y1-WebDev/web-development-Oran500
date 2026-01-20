@@ -48,7 +48,22 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $p1 = 5.99;
+        $p2 = 12;
+        $p3 = 2;
+
+        $q1 = 5;
+        $q2 = 7;
+        $p3 = 3;
+
+        $tp1 = $p1 * $q1;
+        $tp2 = $p2 * $q1;
+        $tp3 = $p3 * $q3;
+
+        $totCost = $tp1 + $tp2 + $tp3;
+        $finPrice = $totCost * 0.9;
+
+        echo $finPrice;
         ?>
     </div>
 
