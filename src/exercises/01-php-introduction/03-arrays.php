@@ -26,7 +26,11 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $movies = ["Jaws", "saw", "Avengers Endgame", "Ant-man", "The lego movie"];
+
+        for($i = 1; $i <= count($movies); $i++){
+            echo "<p> Movie $i: ", $movies[$i-1], "</p>";
+        }
         ?>
     </div>
 
@@ -41,7 +45,14 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $studentKeys = [
+            "name" => "Oran Phillips",
+            "studentId" => "N00255034",
+            "course" => "Creative Computing",
+            "grade" => "B"
+        ];
+
+        echo "The student {$studentKeys['name']} has ID {$studentKeys['studentId']} and is in the course {$studentKeys['course']} with grade {$studentKeys['grade']}"
         ?>
     </div>
 
@@ -57,7 +68,17 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $countries = [
+            "Ireland" => "Dublin",
+            "France" => "Paris",
+            "Spain" => "Madrid",
+            "Italy" => "Rome",
+            "Greenland" => "Nuuk"
+        ];
+
+        foreach($countries as $country => $capital){
+            echo "<p>$country has the capital $capital </p>";
+        }
         ?>
     </div>
 
@@ -74,7 +95,11 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $menu = [
+            "Starters" => [
+                
+            ]
+        ]
         ?>
     </div>
 
