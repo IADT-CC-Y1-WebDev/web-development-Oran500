@@ -97,9 +97,24 @@
         <?php
         $menu = [
             "Starters" => [
-                
+                "garlic bread" => "5.99",
+                "Prawn cocktail" => "6.99",
+                "wings" => "5.99"
+            ],
+            "Main Course" => [
+                "pizza" => "12.50",
+                "lasagne" => "11.50",
+                "spagetti bolognese" => "11.0"
             ]
-        ]
+        ];
+
+        foreach($menu as $course => $items){
+            echo "<p>". ucfirst($course). " menu items: </p>";
+            echo "<ul>";
+            foreach($items as $dish => $price){
+                echo "<li> $dish\t($price)";
+            }
+        }
         ?>
     </div>
 
