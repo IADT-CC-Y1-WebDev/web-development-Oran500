@@ -26,7 +26,7 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        echo "$_SERVER = ";
         ?>
     </div>
 
