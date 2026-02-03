@@ -26,7 +26,12 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        echo "$_SERVER = ";
+        print('$_SERVER = ');
+        echo "<pre>";
+        print_r($_SERVER);
+        echo "</pre>";
+
+        print_r($PHP_SELF);
         ?>
     </div>
 
