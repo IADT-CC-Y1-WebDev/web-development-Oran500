@@ -56,7 +56,6 @@ try {
     $data = [
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
-        'price' => $_POST['price'] ?? null,
         'publisher_id' => $_POST['publisher_id'] ?? null,
         'year' => $_POST['year'] ?? null,
         'isbn' => $_POST['isbn'] ?? null,
