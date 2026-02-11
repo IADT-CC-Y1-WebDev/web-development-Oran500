@@ -26,12 +26,22 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        print('$_SERVER = ');
+        print('$PHP_SELF = ');
         echo "<pre>";
-        print_r($_SERVER);
+        print_r($_SERVER['PHP_SELF']);
         echo "</pre>";
-
-        print_r($PHP_SELF);
+        print('$REQUEST_METHOD = ');
+        echo "<pre>";
+        print_r($_SERVER['REQUEST_METHOD']);
+        echo "</pre>";
+        print('$HTTP_HOST = ');
+        echo "<pre>";
+        print_r($_SERVER['HTTP_HOST']);
+        echo "</pre>";
+        print('$HTTP_USER_AGENT = ');
+        echo "<pre>";
+        print_r($_SERVER['HTTP_USER_AGENT']);
+        echo "</pre>";
         ?>
     </div>
 
@@ -48,6 +58,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        // print_r($_SERVER['QUERY_STRING']);
+        $name = $_GET['name'];
+
+        if($name){
+            echo "Hello $name";
+        }
+        else{
+            echo "Hello Guest";
+        }
+
         ?>
     </div>
 
@@ -65,6 +85,22 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        $product = $_GET['product'];
+        $quantity = $_GET['quantity'];
+
+        if($product && $quantity){
+            echo "You ordered $quantity $product";
+        }
+        else if($product){
+            echo "error: no quantity";
+        }
+        else if($quantity){
+            echo "error:no product";
+        }
+        else{
+            echo "error: no product or quantity";
+        }
         ?>
     </div>
 

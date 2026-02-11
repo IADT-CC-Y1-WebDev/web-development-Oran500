@@ -25,6 +25,15 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function celsiusToFahrenheit(){
+            $celsius = $_GET['celsius'];
+            $fahrenheit = ($celsius * (9/5)) + 32;
+
+            echo "$fahrenheit";
+        }
+
+        celsiusToFahrenheit()
         ?>
     </div>
 
@@ -41,6 +50,26 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function calculateRectangleArea(){
+            $width = $_GET['width'];
+            $height = $_GET['height'];
+
+            if($width&$height){
+                echo $width * $height;
+            }
+            else if($width){
+                echo $width * $width;
+            }
+            else if($height){
+                echo $height * $height;
+            }
+            else{
+                echo "error: no side length given";
+            }
+        }
+
+        calculateRectangleArea()
         ?>
     </div>
 
