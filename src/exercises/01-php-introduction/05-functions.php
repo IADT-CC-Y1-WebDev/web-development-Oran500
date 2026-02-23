@@ -86,6 +86,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function checkEvenOdd(){
+            $number = $_GET['number'];
+
+            if($number)
+        }
         ?>
     </div>
 
