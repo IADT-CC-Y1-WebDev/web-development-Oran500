@@ -20,14 +20,14 @@ try {
         throw new Exception("Book not found.");
     }
 
-    $bookPlatforms = Platform::findByBook($book->id);
-    $bookPlatformsIds = [];
-    foreach ($bookPlatforms as $platform) {
-        $bookPlatformsIds[] = $platform->id;
-    }
+    // $bookPlatforms = Platform::findByBook($book->id);
+    // $bookPlatformsIds = [];
+    // foreach ($bookPlatforms as $platform) {
+    //     $bookPlatformsIds[] = $platform->id;
+    // }
 
-    $years = Year::findAll();
-    $platforms = Platform::findAll();
+    // $years = Year::findAll();
+    // $platforms = Platform::findAll();
 }
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
@@ -71,9 +71,9 @@ catch (PDOException $e) {
                         <label class="special" for="year_id">Year:</label>
                         <div>
                             <select id="year_id" name="year_id" required>
-                                <?php foreach ($years as $year) { ?>
-                                    <option value="<?= h($year->id) ?>" <?= chosen('year_id', $year->id, $book->year_id) ? "selected" : "" ?>>
-                                        <?= h($year->name) ?>
+                                <?php foreach ($years as $year_id) { ?>
+                                    <option value="<?= h($year_id->id) ?>" <?= chosen('year_id', $year_id->id, $book->year_id) ? "selected" : "" ?>>
+                                        <?= h($book->year_id) ?>
                                     </option>
                                 <?php } ?>
                             </select>
@@ -87,7 +87,7 @@ catch (PDOException $e) {
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
-                    <div class="input">
+                    <!-- <div class="input">
                         <label class="special">Platforms:</label>
                         <div>
                             <?php foreach ($platforms as $platform) { ?>
@@ -103,7 +103,7 @@ catch (PDOException $e) {
                             <?php } ?>
                         </div>
                         <p><?= error('platform_ids') ?></p>
-                    </div>
+                    </div> -->
                     <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
                         <label class="special" for="image">Image (optional):</label>

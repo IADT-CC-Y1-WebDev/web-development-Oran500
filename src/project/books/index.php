@@ -42,13 +42,6 @@ catch (PDOException $e) {
                             </select>
                         </div>
                         <div>
-                            <label for="platform_filter">Platform:</label>
-                            <select id="platform_filter" name="platform_filter">
-                                <option value="">All Platforms</option>
-                                <?php foreach ($platforms as $platform) { ?>
-                                    <option value="<?= h($platform->id) ?>"><?= h($platform->name) ?></option>
-                                <?php } ?>
-                            </select>
                         </div>
                         <div>
                             <button type="button" id="apply_filters">Apply Filters</button>

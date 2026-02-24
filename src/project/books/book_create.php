@@ -7,8 +7,8 @@ require_once 'php/lib/utils.php';
 startSession();
 
 try {
-    $years = Year::findAll();
-    $platforms = Platform::findAll();
+    // $years = Year::findAll();
+    // $platforms = Platform::findAll();
 }
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
@@ -65,7 +65,7 @@ catch (PDOException $e) {
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
-                    <div class="input">
+                    <!-- <div class="input">
                         <label class="special">Platforms:</label>
                         <div>
                             <?php foreach ($platforms as $platform) { ?>
@@ -81,7 +81,7 @@ catch (PDOException $e) {
                             <?php } ?>
                         </div>
                         <p><?= error('platforms_ids') ?></p>
-                    </div>
+                    </div> -->
                     <div class="input">
                         <label class="special" for="image">Image (required):</label>
                         <div>

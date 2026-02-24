@@ -13,7 +13,7 @@ try {
         die("<p>Error: Book not found.</p>");
     }
 
-    // $year = Year::findById($book->year_id);
+    // $format_ids = Book::findById($book->format_ids);
     // $platforms = Platform::findByBook($book->id);
 
     // $platformNames = [];
@@ -53,10 +53,10 @@ catch (PDOException $e) {
 
                     <div class="bottom-content">
                         <h2><?= htmlspecialchars($book->title) ?></h2>
-                        <p>author: <?= htmlspecialchars($book->author) ?></p>
-                        <p>Year: <?= htmlspecialchars($year->name) ?></p>
+                        <p>Author: <?= htmlspecialchars($book->author) ?></p>
+                        <p>Year: <?= htmlspecialchars($book->year_id) ?></p>
                         <p>Description:<br /><?= nl2br(htmlspecialchars($book->description)) ?></p>
-                        <p>Platforms: <?= implode(', ', $platformNames) ?></p>
+                        <!-- <p>Platforms: <?= implode(', ', $platformNames) ?></p> -->
                     </div>
                 </div>
             </div>

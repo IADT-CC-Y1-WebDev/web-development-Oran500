@@ -17,7 +17,7 @@ class Book {
             $this->id = $data['id'] ?? null;
             $this->title = $data['title'] ?? null;
             $this->author = $data['author'] ?? null;
-            // $this->year = $data['year'] ?? null;
+            $this->year_id = $data['year'] ?? null;
             $this->description = $data['description'] ?? null;
             $this->cover_filename = $data['cover_filename'] ?? null;
         }
@@ -52,10 +52,10 @@ class Book {
     }
 
     // Find books by year
-    public static function findByYear($yearId) {
+    public static function findByYear($year_id) {
         $db = DB::getInstance()->getConnection();
         $stmt = $db->prepare("SELECT * FROM books WHERE year_id = :year_id ORDER BY title");
-        $stmt->execute(['year_id' => $yearId]);
+        $stmt->execute(['year_id' => $year_id]);
 
         $books = [];
         while ($row = $stmt->fetch()) {
