@@ -54,6 +54,13 @@ catch (PDOException $e) {
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
                     <div class="input">
+                        <label class="special" for="author">Author:</label>
+                        <div>
+                            <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
+                            <p><?= error('author') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
                             <input type="text" id="title" name="title" value="<?= old('title', $book->title) ?>" required>
@@ -61,23 +68,10 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="author">Release Year:</label>
+                        <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="date" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
-                            <p><?= error('author') ?></p>
-                        </div>
-                    </div>
-                    <div class="input">
-                        <label class="special" for="year_id">Year:</label>
-                        <div>
-                            <select id="year_id" name="year_id" required>
-                                <?php foreach ($years as $year_id) { ?>
-                                    <option value="<?= h($year_id->id) ?>" <?= chosen('year_id', $year_id->id, $book->year_id) ? "selected" : "" ?>>
-                                        <?= h($book->year_id) ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                            <p><?= error('year_id') ?></p>
+                            <input type="special" id="year" name="year" value="<?= old('year', $book->year_id) ?>" required>
+                            <p><?= error('year') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -87,23 +81,6 @@ catch (PDOException $e) {
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
-                    <!-- <div class="input">
-                        <label class="special">Platforms:</label>
-                        <div>
-                            <?php foreach ($platforms as $platform) { ?>
-                                <div>
-                                    <input type="checkbox" 
-                                        id="platform_<?= h($platform->id) ?>" 
-                                        name="platform_ids[]" 
-                                        value="<?= h($platform->id) ?>"
-                                        <?= chosen('platform_ids', $platform->id, $bookPlatformsIds) ? "checked" : "" ?>
-                                    >
-                                    <label for="platform_<?= h($platform->id) ?>"><?= h($platform->name) ?></label>
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <p><?= error('platform_ids') ?></p>
-                    </div> -->
                     <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
                         <label class="special" for="image">Image (optional):</label>
