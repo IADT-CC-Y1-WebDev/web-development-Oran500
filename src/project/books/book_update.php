@@ -22,9 +22,10 @@ try {
         'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
-        'year_id' => $_POST['year_id'] ?? null,
+        'publisher_id' => $_POST['publisher_id'] ?? null,
+        'year' => $_POST['year'] ?? null,
+        'isbn' => $_POST['isbn'] ?? null,
         'description' => $_POST['description'] ?? null,
-        'platform_ids' => $_POST['platform_ids'] ?? [],
         'image' => $_FILES['image'] ?? null
     ];
 
@@ -33,9 +34,10 @@ try {
         'id' => 'required|integer',
         'title' => 'required|notempty|min:1|max:255',
         'author' => 'required|notempty',
-        'year_id' => 'required|integer',
+        'publisher_id' => 'required|notempty|integer',
+        'year' => 'required|integer',
+        'isbn' => 'required|notempty|min:13|max:14',
         'description' => 'required|notempty|min:10|max:5000',
-        'platform_ids' => 'required|array|min:1|max:10',
         'image' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880' // optional -- no required rule
     ];
 
@@ -58,17 +60,17 @@ try {
     }
 
     // Verify year exists
-    $year = Year::findById($data['year_id']);
-    if (!$year) {
-        throw new Exception('Selected year does not exist.');
-    }
+    // $year = Year::findById($data['year']);
+    // if (!$year) {
+    //     throw new Exception('Selected year does not exist.');
+    // }
 
     // Verify platforms exist
-    foreach ($data['platform_ids'] as $platformId) {
-        if (!Platform::findById($platformId)) {
-            throw new Exception('One or more selected platforms do not exist.');
-        }
-    }
+    // foreach ($data['platform_ids'] as $platformId) {
+    //     if (!Platform::findById($platformId)) {
+    //         throw new Exception('One or more selected platforms do not exist.');
+    //     }
+    // }
 
     // Process the uploaded image (validation already completed)
     $imageFilename = null;
@@ -87,7 +89,9 @@ try {
     // Update the book instance
     $book->title = $data['title'];
     $book->author = $data['author'];
-    $book->year_id = $data['year_id'];
+    $book->publisher_id = $data['publisher_id'];
+    $book->year = $data['year'];
+    $book->isbn = $data['isbn'];
     $book->description = $data['description'];
     if ($imageFilename) {
         $book->cover_filename = $imageFilename;
@@ -96,14 +100,14 @@ try {
     // Save to database
     $book->save();
 
-    // Delete existing platform associations
-    BookPlatform::deleteByBook($book->id);
-    // Create new platform associations
-    if (!empty($data['platform_ids']) && is_array($data['platform_ids'])) {
-        foreach ($data['platform_ids'] as $platformId) {
-            BookPlatform::create($book->id, $platformId);
-        }
-    }
+    // // Delete existing platform associations
+    // BookPlatform::deleteByBook($book->id);
+    // // Create new platform associations
+    // if (!empty($data['platform_ids']) && is_array($data['platform_ids'])) {
+    //     foreach ($data['platform_ids'] as $platformId) {
+    //         BookPlatform::create($book->id, $platformId);
+    //     }
+    // }
 
     // Clear any old form data
     clearFormData();

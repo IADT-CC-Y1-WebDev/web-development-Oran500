@@ -68,10 +68,24 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
+                        <label class="special" for="publisher_id">Publisher ID:</label>
+                        <div>
+                            <input type="text" id="publisher_id" name="publisher_id" value="<?= old('publisher_id', $book->publisher_id) ?>" required>
+                            <p><?= error('publisher_id') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
                         <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="special" id="year" name="year" value="<?= old('year', $book->year_id) ?>" required>
+                            <input type="number" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
                             <p><?= error('year') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label class="special" for="isbn">ISBN:</label>
+                        <div>
+                            <input type="1234567890123" id="isbn" name="isbn" value="<?= old('isbn', $book->isbn) ?>" required>
+                            <p><?= error('isbn') ?></p>
                         </div>
                     </div>
                     <div class="input">

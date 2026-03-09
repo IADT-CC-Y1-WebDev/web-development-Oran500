@@ -21,9 +21,10 @@ try {
     $data = [
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
-        'year_id' => $_POST['year_id'] ?? null,
+        'publisher_id' => $_POST['publisher_id'] ?? null,
+        'year' => $_POST['year'] ?? null,
+        'isbn' => $_POST['isbn'] ?? null,
         'description' => $_POST['description'] ?? null,
-        'platform_ids' => $_POST['platform_ids'] ?? [],
         'image' => $_FILES['image'] ?? null
     ];
 
@@ -31,9 +32,10 @@ try {
     $rules = [
         'title' => 'required|notempty|min:1|max:255',
         'author' => 'required|notempty',
-        'year_id' => 'required|integer',
+        'publisher_id' => 'required|notempty|integer',
+        'year' => 'required|integer',
+        'isbn' => 'required|notempty|min:13|max:14',
         'description' => 'required|notempty|min:10|max:5000',
-        'platform_ids' => 'required|array|min:1|max:10',
         'image' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
@@ -51,10 +53,10 @@ try {
 
     // All validation passed - now process and save
     // Verify year exists
-    $year = Year::findById($data['year_id']);
-    if (!$year) {
-        throw new Exception('Selected year does not exist.');
-    }
+    // $year = Year::findById($data['year']);
+    // if (!$year) {
+    //     throw new Exception('Selected year does not exist.');
+    // }
 
     // Process the uploaded image (validation already completed)
     $uploader = new ImageUpload();
@@ -68,21 +70,23 @@ try {
     $book = new Book();
     $book->title = $data['title'];
     $book->author = $data['author'];
-    $book->year_id = $data['year_id'];
+    $book->publisher_id = $data['publisher_id'];
+    $book->year = $data['year'];
+    $book->isbn = $data['isbn'];
     $book->description = $data['description'];
     $book->cover_filename = $imageFilename;
 
     // Save to database
     $book->save();
-    // Create platform associations
-    if (!empty($data['platform_ids']) && is_array($data['platform_ids'])) {
-        foreach ($data['platform_ids'] as $platformId) {
-            // Verify platform exists before creating relationship
-            if (Platform::findById($platformId)) {
-                BookPlatform::create($book->id, $platformId);
-            }
-        }
-    }
+    // // Create platform associations
+    // if (!empty($data['platform_ids']) && is_array($data['platform_ids'])) {
+    //     foreach ($data['platform_ids'] as $platformId) {
+    //         // Verify platform exists before creating relationship
+    //         if (Platform::findById($platformId)) {
+    //             BookPlatform::create($book->id, $platformId);
+    //         }
+    //     }
+    // }
 
     // Clear any old form data
     clearFormData();

@@ -30,7 +30,7 @@ catch (PDOException $e) {
                 <h1>Create Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_store.php" method="POST" enctype="multipart/form-data">
+                <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
@@ -39,23 +39,37 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="author">Release Year:</label>
+                        <label class="special" for="author">author:</label>
                         <div>
-                            <input type="date" id="author" name="author" value="<?= old('author') ?>" required>
+                            <input type="text" id="author" name="author" value="<?= old('author') ?>" required>
                             <p><?= error('author') ?></p>
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="year_id">Year:</label>
+                        <label class="special" for="publisher_id">Publisher ID:</label>
+                        <select id="publisher_id" name="publisher_id">
+                            <option value="">-- Select Publisher --</option>
+                            <?php foreach ($publishers as $pub): ?>
+                                <option value="<?= $pub['id'] ?>"
+                                    <?= chosen('publisher_id', $pub['id']) ? "selected" : "" ?>
+                                >
+                                    <?= h($pub['name']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <label class="special" for="year_id">Release Year:</label>
                         <div>
-                            <select id="year_id" name="year_id" required>
-                                <?php foreach ($years as $year) { ?>
-                                    <option value="<?= h($year->id) ?>" <?= chosen('year_id', $year->id) ? "selected" : "" ?>>
-                                        <?= h($year->name) ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                            <p><?= error('year_id') ?></p>
+                            <input type="text" id="year" name="year" value="<?= old('year') ?>" required>
+                            <p><?= error('year') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label class="special" for="isbn">ISBN:</label>
+                        <div>
+                            <input type="12346789013" id="isbn" name="isbn" value="<?= old('isbn') ?>" required>
+                            <p><?= error('isbn') ?></p>
                         </div>
                     </div>
                     <div class="input">

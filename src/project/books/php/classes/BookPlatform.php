@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 class BookPlatform {
     // Check if a relationship exists
@@ -60,4 +60,4 @@ class BookPlatform {
         ");
         return $stmt->execute(['book_id' => $bookId]);
     }
-}
+} -->
