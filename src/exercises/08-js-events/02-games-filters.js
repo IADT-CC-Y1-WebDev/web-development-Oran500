@@ -2,7 +2,7 @@ let appplyBtn = document.getElementById('apply_filters');
 let clearBtn = document.getElementById('clear_filters');
 let form = document.getElementById('filters');
 
-let cards = document.querySelectorAll('card');
+let cards = document.querySelectorAll('.card');
 
 appplyBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -16,12 +16,15 @@ clearBtn.addEventListener('click', (event) => {
 function applyFilters(){
     //console.log('Applying Filters');
     let filters = getFilters();
-    let matches =[];
     for(let i = 0; i != cards.length; i++){
         let card = cards[i];
-        matches[i] = cardMatches(card, filters);
+        let match = cardMatches(card, filters);
+
+        card.classList.toggle("hidden", !match);
     }
-    console.log(matches)
+    let cardsArray = Array.from(cards);
+    const sorted = sortCards(sortArray, filters.sortBy);
+    // console.log(matches)
 }
 
 function clearFilters(){
@@ -50,5 +53,40 @@ function getFilters(){
 function cardMatches(crd, fltrs){
     // console.log(crd.dataset.title, fltrs.titleFilter);
     let title = crd.dataset.title.toLowerCase();
-    return title.includes(fltrs.titleFilter);
+    let genre = crd.dataset.genre;
+    let platform = crd.dataset.platform;
+
+    let matchTitle = fltrs.titleFilter === "" || title.includes(fltrs.titleFilter);
+    let matchGenre = fltrs.genreFilter === "" || genre.includes(fltrs.genreFilter);
+    let matchPlatform = fltrs.platformFilter === "" || platform.includes(fltrs.platformFilter);
+    
+    return matchTitle && matchGenre && matchPlatform;
+}
+
+function compare(a, b){
+    let titleA = a.dataset.title.toLowerCase();
+    let titleB = b.dataset.title.toLowerCase();
+    let yearA = Number(a.dataset.year);
+    let yearB = Number(b.dataset.year);
+
+    if(sortBy == "year_desc") return yearB - yearA;
+    if(sortBy == "year_asc") return yearA - yearB;
+
+    return titleA.localeCompare(titleB);
+}
+
+function sortCards(cards, sortBy){
+    const list = cards.slice();
+
+    list.sort((a, b) => {
+        let titleA = a.dataset.title.toLowerCase();
+        let titleB = b.dataset.title.toLowerCase();
+        let yearA = Number(a.dataset.year);
+        let yearB = Number(b.dataset.year);
+
+        if(sortBy == "year_desc") return yearB - yearA;
+        if(sortBy == "year_asc") return yearA - yearB;
+
+        return titleA.localeCompare(titleB);
+    });
 }
